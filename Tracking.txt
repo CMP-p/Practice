@@ -1,0 +1,8 @@
+This document is intended for superficial tracking. (when i did what when, briefly) and will likely be deleted as it's tracked by commit history as well.
+I'll likely include several exercises in one file, to keep it decluttered of files. 
+
+So far, I've done:
+
+1 exercises 12/Mar/25 ((review)print/input)
+
+4 - 13/Mar/25 ((review) if/elif/else (new) try/except)
