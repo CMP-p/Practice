@@ -1,4 +1,6 @@
-# Greet user by name
+#This program covers the first 5 excercises
+
+#  Greet user by name
 
 def greet():
     name = input("What's your name? \n").title()
