@@ -1,6 +1,6 @@
-#Tracking excercises 6-10 perhaps
+#Tracking excercises 6 & 7
 
-#Rewriting pay calculator with overtime, in a function, with value returned
+#Excercise 6, Rewriting pay calculator with overtime, in a function, with value returned
 
 def pay(Hours,Wage):
     check = True
@@ -29,7 +29,6 @@ def pay(Hours,Wage):
     #calculates pay, formats numbers
     Pay = '$' + str(Wage*Hours) + '0'
     return Pay
-    print(f'your check will have {'$'+ str(Hours*Wage) +'0'}  on it', '\n'*3)
     
   
 ########################### Defined Function #######################################
@@ -37,4 +36,19 @@ def pay(Hours,Wage):
 
 Payment = pay(input('How many hours did you work?: \n'), input('And Whats your hourly wage?: \n'))
 print(f'your check will have {Payment} on it', '\n'*3)
-print('end')
+print('end',quit())
+
+
+#Excercise 7
+c = 0
+while True:
+    c += 1
+    if c < 5:
+        print('c less than 5')
+        continue
+    elif c > 5:
+        print('C greater than 5', 'x'*c)
+    else : pass
+    print('nearing the end')
+    if c >= 10:
+        break

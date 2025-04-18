@@ -6,3 +6,5 @@ So far, I've done:
 1 exercises 12/Mar/25 ((review)print/input)
 
 4 - 13/Mar/25 ((review) if/elif/else (new) try/except)
+
+7 - 4/17/25 ((review)f or/while loops, functions (new) continue, None)
