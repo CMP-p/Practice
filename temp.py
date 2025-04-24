@@ -1,16 +1,8 @@
 #I run examples in here
-fname = input()
-fhand = open(fname)
-
-x=0
-for lines in fhand:
-    x += 1
-    #print(str(x)+'-', lines)
-
-print(x,'Lines in',fname)
-fhand.seek(0)
-num = fhand.readlines(1)
-print(num)
+init = 'Twinkle winkle little star'.split()
+init.reverse()
+str(init)
+print(init)
 
     
 
