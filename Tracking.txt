@@ -8,3 +8,5 @@ So far, I've done:
 4 - 13/Mar/25 ((review) if/elif/else (new) try/except)
 
 7 - 4/17/25 ((review)f or/while loops, functions (new) continue, None)
+
+10? - 4/26/25 I need to eventually put all these excercises into one file, for when I move onto another program. I'm 43% through py4e
