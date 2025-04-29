@@ -1,15 +1,24 @@
-#I run examples in here
-def calcul(inp):
-    your_str = inp
-    num = 0
-    for i in your_str:
-        num += ord(i)
-    return num
+#This was indeed excercise 10. Check out that final print statement huh???
+inp = input()
+if inp == '': inp = 'clown.txt'
+fhandle = open(inp)
+mydict={}
 
+for line in fhandle:
+    words = line.rstrip().split()
+    for word in words:
+        mydict[word] = mydict.get(word,0) +1
+fhandle.close() 
+###remember to close the file when you're done using it, to avoid data cleaks. Also remember close is a .method
 
-names = ['Christian', "Kayla", "Jeremy"]
-val_name = {}
-for name in names:
-    val_name[name] = val_name.get(name, calcul(name))
+print(dict([(i,j) for j,i in sorted([(j,i) for i,j in mydict.items()],reverse=True)[:3]]))
 
-print(val_name)
+top10 = [(k) for v,k in (sorted([(v,k) for k,v in mydict.items()],reverse=True))[:10]]
+print(top10)
+
+newword = ''
+
+for i in top10:
+    newword = newword + f' {i}'
+newword = newword +'.'
+print(newword)
