@@ -1,24 +1,18 @@
-#This was indeed excercise 10. Check out that final print statement huh???
-inp = input()
-if inp == '': inp = 'clown.txt'
-fhandle = open(inp)
-mydict={}
+#I practice in here with the lesson
 
-for line in fhandle:
-    words = line.rstrip().split()
-    for word in words:
-        mydict[word] = mydict.get(word,0) +1
-fhandle.close() 
-###remember to close the file when you're done using it, to avoid data cleaks. Also remember close is a .method
+import re
 
-print(dict([(i,j) for j,i in sorted([(j,i) for i,j in mydict.items()],reverse=True)[:3]]))
+stwing1 = 'this is test one'
+stwing2 = 'this is test two'
+stwing3 = 'this is test three'
+stwings = stwing1,stwing2,stwing3
+found = list()
+for i in stwings:
+    if re.search(r't.+\s+t.+\s+t', i):
+        found.append(re.findall(r'[set]+',i))
+        print(i)
+    else: print('hehe okay buddy\vI saw that')
 
-top10 = [(k) for v,k in (sorted([(v,k) for k,v in mydict.items()],reverse=True))[:10]]
-print(top10)
+print(found)
 
-newword = ''
-
-for i in top10:
-    newword = newword + f' {i}'
-newword = newword +'.'
-print(newword)
+#Practicing with regex re.search(patter, text) and re.findall(pattern, text) 
