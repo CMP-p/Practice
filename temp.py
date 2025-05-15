@@ -4,7 +4,7 @@ import socket
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print(mysock)
 mysock.connect(('data.pr4e.org', 80))
-cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
+cmd = 'GET /romeo.txt HTTP/1.0\r\nHost: data.pr4e.org\r\n\r\n'.encode()
 mysock.send(cmd)
 
 dati = b''
@@ -12,11 +12,11 @@ while True:
     data = mysock.recv(512)
     if len(data) < 1:
         break
-    print(data.decode())
     dati += data
 mysock.close()
 
-print('/n/n', dati.decode())
+
+print(dati.decode())
 
 # Pracrticing with TCP? something about sockets, ports and extensions
 # recieving byte strings, looping through data and decoding the results
