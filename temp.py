@@ -1,22 +1,19 @@
 #I practice in here with the lesson
-import socket
+import urllib.request, urllib.parse, urllib.error
 
-mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print(mysock)
-mysock.connect(('data.pr4e.org', 80))
-cmd = 'GET /romeo.txt HTTP/1.0\r\nHost: data.pr4e.org\r\n\r\n'.encode()
-mysock.send(cmd)
+urlhand = urllib.request.urlopen("http://data.pr4e.org/romeo.txt")
 
-dati = b''
-while True:
-    data = mysock.recv(512)
-    if len(data) < 1:
-        break
-    dati += data
-mysock.close()
+counts = {}
+for line in urlhand:
+    words = line.decode().split()
+    for word in words:
+        counts[word] = counts.get(word, 0) + 1
+
+sum = 0
+for k,v in counts.items():
+    sum += v
+print(counts, f'\n{sum}')
+    
 
 
-print(dati.decode())
-
-# Pracrticing with TCP? something about sockets, ports and extensions
-# recieving byte strings, looping through data and decoding the results
+#importing urllib library modules and some dictionary refreshing
