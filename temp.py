@@ -1,19 +1,21 @@
 #I practice in here with the lesson
-import urllib.request, urllib.parse, urllib.error
+import urllib.error, urllib.parse, urllib.request
+from bs4 import BeautifulSoup
 
-urlhand = urllib.request.urlopen("http://data.pr4e.org/romeo.txt")
+url = input('Enter- ')
+html = urllib.request.urlopen(url).read()
+soup = BeautifulSoup(html, 'html.parser')
 
-counts = {}
-for line in urlhand:
-    words = line.decode().split()
-    for word in words:
-        counts[word] = counts.get(word, 0) + 1
+tags = soup('a')
+for tag in tags:
+    print(tag.get('href', None))
 
-sum = 0
-for k,v in counts.items():
-    sum += v
-print(counts, f'\n{sum}')
-    
+print('done')
 
 
 #importing urllib library modules and some dictionary refreshing
+
+'''
+I took a huge break. Felt a lot of overwhelm. I suppose I needed to straightne out some mental/emotional barriers.
+I'm well enough to continue, taking a more mindful approach.
+'''
