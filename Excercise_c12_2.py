@@ -9,5 +9,5 @@ for line in fhand:
     print(line.decode().strip())
 print(wordcount)
 
-
-#the practice for the practice
+'''Simple urllib practice. I probably know it all to well at this point now though. Instructor wasn't clear
+about not exactly needing it. :roll_eyes:'''
