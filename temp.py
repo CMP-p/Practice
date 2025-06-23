@@ -1,13 +1,23 @@
+''''''
 import urllib.parse, urllib.request, urllib.error
+from bs4 import BeautifulSoup
+import ssl
+''''''
+#ssl wasn't explained or gone over. just a simple "it makes secure http work. just do it." so I'll learn it DIY later
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
-wordcount = dict()
-fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+#the html variable -- where it's `library`.`module`.method/function was also not explained.
+#however, it was made relatively clear that the html variable returns a string
+#unfortuneately, the soup object, and even calling the BeautifulSoup function, wasn't super clear.  
+url = input('website: ')
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, ('html.parser'))
 
-for line in fhand:
-    for word in line.decode().split():
-        wordcount[word] = wordcount.get(word, 0) + 1
-    print(line.decode().strip())
-print(wordcount)
+rturned_tags = soup('a')
+for tag in rturned_tags:
+    print(tag.get('href', ...))
 
 
 #the practice for the practice
