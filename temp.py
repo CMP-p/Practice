@@ -1,27 +1,36 @@
 ''''''
-import xml.etree.ElementTree as ET
+import json
 ''''''
-#parsing xml using ElementTree and a small class-created document.
-input = '''<stuff>
-    <users>
-        <user x="2">
-            <id>001</id>
-            <name>Chuck</name>
-            </user>
-        <user x="7">
-            <id>009</id>
-            <name>Brent</name>
-        </user>
-    </users>
-</stuff>
+#parsion with JSON using a small class-created document.
+input = '''{
+    "name" : "Chuck",
+    "phone" : {
+        "type" : "intl",
+        "number" : "+1 743 000 0000"
+    },
+    "email" : {
+        "hide" : "yes"
+    },
+    "age" : "45"
+}
 '''
-stuff = ET.fromstring(input)
-lst = stuff.findall('users/user')
-print('list:',lst)
 
-for item in lst:
-    print('Name:', item.find('name').text)
-    print('ID:', item.find('id'))
-    print('Attribute', item.get('x'))
+input2 = '''[
+    {
+        "id" : "001",
+        "x" : "1",
+        "Name" : "Chuck"
+    },
+    {
+        "id" : "002",
+        "x" : "2",
+        "Name" : "Brent"
+    }
+]'''
+data = json.loads(input)
+print('data type', type(data))
+print('Name:', data['phone']['type'],'\nAge:',data['age'])
 
+data2 = json.loads(input2)
+print(data2[0]["id"])
 #the practice for the practice
