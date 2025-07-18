@@ -1,3 +1,6 @@
+# This is an alternate I created to replace the excercise on this chapter, because google now requires API keys, which
+# link to payment. Which is fine because it's still free but the $300 credit expires in 90 days, so I didn't create an
+# account just yet. It's a mixture of being cheap, resourceful, and engaging in growth oriented challenge.
 ''''''
 import json
 import urllib.parse, urllib.error, urllib.request
