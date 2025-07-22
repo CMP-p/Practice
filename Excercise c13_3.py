@@ -1,6 +1,6 @@
 ''''''
 import json
-import oauth
+import oauthlib
 ''''''
 #Excercise c13_3
 '''
@@ -22,3 +22,11 @@ this specific excercise. Now that I understand how to access twitters `developer
 now learning about *what* Oauth is, and how to incorporate it into the program. I understand Oauth sends users to the targeted
 apps authentication page, so that the developer can access content on behalf of the user, w/o need of their genuine creds.
 '''
+"""
+I've moved further in my understanding on oauth, and it's library. It would seem that a Leah Culver created the oauth module 
+when she was 25, right after getting her CS degree. But that was in 2007, and is actually outdated, especially because it 
+relied on cgi, which was phased out in python 3.13. A new library, thats more modern and flowy is requests oauthlib, 
+which I have now installed with pip, after uninstalling the oath. It would seem that building the URL request will be easier 
+now. I know that there are 7 values that I need to deliver to the X API in order to properly authenticate a request. And 
+that I have all 7 values. I just need to figure how to put them into the oauth module to construct the headers for me, to 
+make the valid request. After which, I can move onto part 2/3 of this specific excercise"""

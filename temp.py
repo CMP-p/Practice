@@ -1,20 +1,5 @@
-''''''
-import json
-''''''
-#Excercise c13_2
-data = '''
-{
-    "name" : "Chuck",
-    "phone" : {
-        "type" : "intl",
-        "number" : "+1 734 303 4456"
-    },
-    "email" : {
-        "hide" : "yes"
-    }    
-}'''
+import urllib.error, urllib.parse, urllib.request
+import oauthlib
+import oauthlib.oauth1
 
-js = json.loads(data)
-print('Data',type(data),"\njs",type(js))
-
-print(js['name'],'\n',js['email']['hide'])
+print(oauthlib.oauth1.InvalidSignatureMethodError
