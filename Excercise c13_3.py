@@ -29,4 +29,18 @@ relied on cgi, which was phased out in python 3.13. A new library, thats more mo
 which I have now installed with pip, after uninstalling the oath. It would seem that building the URL request will be easier 
 now. I know that there are 7 values that I need to deliver to the X API in order to properly authenticate a request. And 
 that I have all 7 values. I just need to figure how to put them into the oauth module to construct the headers for me, to 
-make the valid request. After which, I can move onto part 2/3 of this specific excercise"""
+make the valid request. After which, I can move onto part 2/3 of this specific excercise
+"""
+'''
+I'm deepening my understanding of the oauth libraries. It would seem that the way to got is indeed `requests_oauthlib` but
+you must use it with the `requests` library, meaning, you cannot use urllib reliably, since this new library actually 
+EXCPECTS the requests objects. Effectively making `requests` a dependency. Which is fine, since it's actually more user-friendly
+and used commercially. establishing parameters are easier. If you REALLY want to, you could install legacy cgi, use regular
+`oauth` library, but it'll be a legacy model you'll be following. Which isn't exactly great for understanding modern worklfows.
+
+I also 'implemented' dr. Chucks `twurl` module, and commented/dissected on all of what it does in the temp.py file, so that
+I know exactly what his code was doing, so that I can recreate similar results using `requests` and `requests_oauthlib`.
+
+I also visited the documentation for `requests_oauthlib` to find out how to properly construct the requests. I copied in
+all of the sections of code using the oauth1 helper, since it's supposedly more complicated, for more learning experience. 
+'''
