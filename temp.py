@@ -1,5 +1,6 @@
-import urllib.error, urllib.parse, urllib.request
-
+#import urllib.error, urllib.parse, urllib.request
+# Foregoing urllib as it's incompatible with requests_oauthlib AND is legacy to `oauth` but requires legecy import of cgi
+import requests
 ## Using OAuth1Session
 # from requests_oauthlib import OAuth1Session
 
@@ -7,11 +8,15 @@ import urllib.error, urllib.parse, urllib.request
 # import requests '''commented out bc I'm suffering with urllib first'''
 from requests_oauthlib import OAuth1
 
-# consumer is client in refernce here
+# consumer is client in refernce here, obtained via ap
 client_key = '...'
 client_secret = '...'
 
-oauth = OAuth1(client_key, client_secret=client_secret)
+# X Access Token(key) and secret. Defined later, but here if you want to test with your own & not fetch
+resource_owner_key = None 
+resource_owner_secret = None 
+
+oauth = OAuth1(client_key=client_key, client_secret=client_secret)
 r = requests.post(url=request_token_url, auth=oauth)
 r.content
 "oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik&oauth_token_secret=Kd75W4OQfb2oJTV0vzGzeXftVAwgMnEK9MumzYcM"

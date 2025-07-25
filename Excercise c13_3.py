@@ -32,7 +32,7 @@ that I have all 7 values. I just need to figure how to put them into the oauth m
 make the valid request. After which, I can move onto part 2/3 of this specific excercise
 """
 '''
-I'm deepening my understanding of the oauth libraries. It would seem that the way to got is indeed `requests_oauthlib` but
+I'm deepening my understanding of the oauth libraries. It would seem that the way to go is indeed `requests_oauthlib` but
 you must use it with the `requests` library, meaning, you cannot use urllib reliably, since this new library actually 
 EXCPECTS the requests objects. Effectively making `requests` a dependency. Which is fine, since it's actually more user-friendly
 and used commercially. establishing parameters are easier. If you REALLY want to, you could install legacy cgi, use regular
@@ -44,3 +44,7 @@ I know exactly what his code was doing, so that I can recreate similar results u
 I also visited the documentation for `requests_oauthlib` to find out how to properly construct the requests. I copied in
 all of the sections of code using the oauth1 helper, since it's supposedly more complicated, for more learning experience. 
 '''
+"""
+Didn't have much time today, but I began to tear into the code I copied over and make it my own. compare the commits to see
+what's changed. I also got a better understanding of class constructors.
+"""
