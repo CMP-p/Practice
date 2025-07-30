@@ -2,34 +2,39 @@
 # Foregoing urllib as it's incompatible with requests_oauthlib AND is legacy to `oauth` but requires legecy import of cgi
 import requests
 ## Using OAuth1Session
-# from requests_oauthlib import OAuth1Session
+# from requests_oauthlib import OAuth1Session #This route is easier, allegedly. I choose pain
 
 # Using OAuth1 auth helper
-# import requests '''commented out bc I'm suffering with urllib first'''
 from requests_oauthlib import OAuth1
 
-# consumer is client in refernce here, obtained via ap
+# consumer == client in refernce here, obtained via app in dev portal on X
 client_key = '...'
 client_secret = '...'
 
-# X Access Token(key) and secret. Defined later, but here if you want to test with your own & not fetch
+# These are variables that come up later, predefined as None, but written here for your understanding
+# These value will be retunred by the codeblock below as part of a query string. Whatever that is.
 resource_owner_key = None 
 resource_owner_secret = None 
 
+#This is where you pass your api key & secret, and get tokens in place.
 oauth = OAuth1(client_key=client_key, client_secret=client_secret)
-r = requests.post(url=request_token_url, auth=oauth)
-r.content
-"oauth_token=Z6eEdO8MOmk394WozF5oKyuAv855l4Mlqo7hhlSLik&oauth_token_secret=Kd75W4OQfb2oJTV0vzGzeXftVAwgMnEK9MumzYcM"
-# from urlparse import parse_qs
-credentials = urllib.parse(r.content)
+r = requests.post(url="https://api.x.com/oauth/request_token", auth=oauth)
+print(r.content.decode()) #debug line
+from urllib.parse import parse_qs
+credentials = parse_qs(r.content.decode()) #turns a qs into dict
+print(credentials,type(credentials)) #debug line
 resource_owner_key = credentials.get('oauth_token')[0]
 resource_owner_secret = credentials.get('oauth_token_secret')[0]
+print (f'\n{resource_owner_key}', f'\n{resource_owner_secret}') #debug line
 
-authorize_url = base_authorization_url + '?oauth_token='
+# constructing the url to redirect the app user to 'sign' and return a token so we can access other endpoints on 
+# their behalf via cocatination.
+authorize_url = 'https://api.x.com/oauth/authorize' + '?oauth_token='
 authorize_url = authorize_url + resource_owner_key
 print('Please go here and authorize,', authorize_url)
 verifier = input('Please input the verifier')
 
+'''
 oauth = OAuth1(client_key,
                    client_secret=client_secret,
                    resource_owner_key=resource_owner_key,
@@ -97,4 +102,4 @@ def test_me():
     # pulling headers returned from opening the url from a variable named connections, usually DR. chuck names this fhandle
     headers = dict(connection.getheaders())
     print(headers)
-
+'''
