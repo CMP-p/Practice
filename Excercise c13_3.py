@@ -48,3 +48,31 @@ all of the sections of code using the oauth1 helper, since it's supposedly more 
 Didn't have much time today, but I began to tear into the code I copied over and make it my own. compare the commits to see
 what's changed. I also got a better understanding of class constructors.
 """
+'''
+I was reading through my previous documentation above, and noticed the twurl comments. While I do recall tearing that code
+up to see what it all does, I now don't know where I put the commented version of it, if that exists. It's likely it was in
+a previous temp.py commit that I've since overwritten. 
+
+The past few attempts at understanding the oauth workflow has proven to be more cumbersome than a 4 hour once over for a
+novice such as myself. 
+'''
+"""
+I've now put in a solid 4-5 more hours (accerlated by copilot) into understanding these final parts of the code. 
+I thought I was close, but I was so far. I've since found the Twurl that dr.chuck created. I added more comments, and 
+separated it out into it's own file. Although, I've learned a lot today, and feel a little exauhsted, so I'm not sure my
+comments are exactly easy to read. 
+
+I've disected the final portion of the oauth cycle, and now have a fairly good understanding of how it works, back and forth
+between X. Heres the simpleton breakdown: There are 3 parties- App, X, User. App ask X for special tokens, by showings its 
+special tokens to X. (showing consumer key and secret in excahnge for a temporary, unverified key and secret). App then 
+gives key to User, to go verify with X. User brings Key to X and shows X it's Key and Secret (usn and pass), and X gives
+back a verifier token. User returns with token to App, and gives App the token. App takes verfier token, temporary 
+unverified token and secret to X saying [Trust]. X says [Bet] after verifiying the verifier, and gives back a verified 
+key and secret, which lets you act on users behalf. Now, App has verified tokens from X with users approval, and must use 
+them with Apps own Key and Secret, to ask X for any informatino it wants from User, without User being present. App or User
+can revoke permission at any time. If App resets their own Key and Secret, App will need to redo this process. App should 
+store User Verified key and secret somewhere else.
+
+I have also, today, after a couple more hours, gotten this to a point where I am able to work ONE endpoint. After all 
+of this work, I was fortuneate to discover that the OAuth1.0 work flow is effectively being phased out altogether at X and
+any endpoints that use V2.0 o must use OAuth 2.0, which is practically all of them. :,)"""
