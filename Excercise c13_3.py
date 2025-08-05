@@ -76,3 +76,8 @@ store User Verified key and secret somewhere else.
 I have also, today, after a couple more hours, gotten this to a point where I am able to work ONE endpoint. After all 
 of this work, I was fortuneate to discover that the OAuth1.0 work flow is effectively being phased out altogether at X and
 any endpoints that use V2.0 o must use OAuth 2.0, which is practically all of them. :,)"""
+'''
+For some reason, the reverse chronological timeline DOES work with OAuth1.0 flow. Perhaps theres still some support for it,
+but it has, seemingly, been officially sunset. I've named this file 'Extra Temporary' For now. I'll fix it up later, and 
+the temp.py file will be transferred into a new file named somthine like 'Oauth 1.0 Floe for X enpoints' But less words.
+'''

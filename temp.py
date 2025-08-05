@@ -82,13 +82,13 @@ oauth = OAuth1(client_key,
                 client_secret=client_secret,
                 resource_owner_key=resource_owner_key,
                 resource_owner_secret=resource_owner_secret,
-                signature_type='AUTH_HEADER')  
- # X requires this
+                signature_type='AUTH_HEADER')   # X requires header signature
+
 while True:
     choices = {'1':'https://api.twitter.com/1.1/account/verify_credentials.json',
                '2':'https://api.x.com/1/account/settings.json',
                'q':'\nQuitting Program...\n'}
-    choice = input('Enter 1 for credential validation. Enter 2 for settings(?). Enter N for next page of timeline. \nEnter Q to quit\n').lower()
+    choice = input('Enter 1 for credential validation. Enter 2 for settings-(requires OAuth2.0) \nEnter Q to quit\n').lower()
     if choice not in choices:
         print('Invalid entry. Please try again.','\n'*3)
         continue
