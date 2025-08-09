@@ -1,15 +1,27 @@
+""""""
+'''
+Please note that this OAuth flow was created by a novice (Emmanuelle Allen) and follows the current OAuth1.0 flow
+and is specifically tailored to be used in conjunction with the X api (https://docs.x.com/x-api/introduction) and
+is only valid for enpoints that accept OAuth 1.0a user context. This link provides a map that this flow should work
+with (https://docs.x.com/fundamentals/authentication/guides/v2-authentication-mapping). I created this to follow allong 
+the PY4E course, but the instruction was really outdated, so I essentially rebuilt the lesson. Sources referenced below.
+(Aug 9 2025) 
+'''
+""""""
 #import urllib.error, urllib.parse, urllib.request
-# Foregoing urllib as it's incompatible with requests_oauthlib AND is legacy to `oauth` but requires legecy import of cgi
+# Foregoing urllib.requests as it's incompatible with requests_oauthlib AND is legacy to `import oauth`
+# which requires a legecy import of cgi
 import requests
 ## Using OAuth1Session
-# from requests_oauthlib import OAuth1Session # This route is easier, allegedly. I choose pain
+# from requests_oauthlib import OAuth1Session ### <= This optional route is easier, allegedly. I choose pain
 
 # Using OAuth1 auth helper
 from requests_oauthlib import OAuth1
 import json #to be used
 
 
-# consumer == client in refernce here, obtained via app in dev portal on X
+# consumer and client are used interchangebly in documentation
+# these are obtained via app in dev portal on X
 client_key = input('Input client/consumer key: ')
 client_secret = input('input client/consumer secret: ')
 print('\n\n') # just cus
@@ -17,6 +29,7 @@ print('\n\n') # just cus
 
 # These are variables that come up later, predefined as None, but written here for your(my) understanding
 # These value will be retunred by the codeblock below this as part of a query string. Whatever that is.
+# Resource owner and User are used interchangebly
 resource_owner_key = None 
 resource_owner_secret = None 
 
@@ -83,27 +96,6 @@ oauth = OAuth1(client_key,
                 resource_owner_key=resource_owner_key,
                 resource_owner_secret=resource_owner_secret,
                 signature_type='AUTH_HEADER')   # X requires header signature
-
-while True:
-    choices = {'1':'https://api.twitter.com/1.1/account/verify_credentials.json',
-               '2':'https://api.x.com/1/account/settings.json',
-               'q':'\nQuitting Program...\n'}
-    choice = input('Enter 1 for credential validation. Enter 2 for settings-(requires OAuth2.0) \nEnter Q to quit\n').lower()
-    if choice not in choices:
-        print('Invalid entry. Please try again.','\n'*3)
-        continue
-    print(choices.get(choice),'\n'*2)
-    if choice == 'q': quit()
-
-    protected_url = choices.get(choice)
-    try:
-        r = requests.get(url=protected_url, auth=oauth)
-    except requests.RequestException as e:
-        print('bad dog!!! \n',e,'\n')
-        continue
-
-    print(r.content.decode(), '\n'*2) #!!!change this to Json and pretty print it
-
 '''
 Referenced sites:
 
@@ -112,5 +104,6 @@ https://docs.x.com/fundamentals/authentication/oauth-1-0a/authorizing-a-request
 https://docs.x.com/fundamentals/authentication/api-reference
 https://docs.x.com/x-api/posts/timelines/quickstart/reverse-chron-quickstart
 https://developer.x.com/apitools/api
+https://docs.x.com/fundamentals/authentication/guides/v2-authentication-mapping
 https://www.youtube.com/watch?v=2c7YwhvpCro 
 '''
